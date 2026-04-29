@@ -1,0 +1,276 @@
+/*
+ * Diamond Index™ — Global Design System
+ * Design Philosophy: Financial Certification Authority
+ * Colors: White (bg), Black (structure), Blue (UI), Silver (panels), Orange (minimal accent)
+ * Typography: Barlow Condensed (headings), Barlow (body), DM Serif Display (display)
+ * Animations: Slow, smooth fades only — no bounce, no spin
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Diamond Index™ Custom Tokens */
+  --color-di-orange: oklch(0.72 0.18 45);
+  --color-di-navy: oklch(0.14 0.04 255);
+  --color-di-blue: oklch(0.42 0.12 255);
+  --color-di-silver: oklch(0.92 0.005 255);
+  --color-di-silver-dark: oklch(0.75 0.01 255);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0.01 255);
+  --card: oklch(0.98 0.002 255);
+  --card-foreground: oklch(0.12 0.01 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.01 255);
+  --primary: oklch(0.38 0.14 255);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.96 0.003 255);
+  --secondary-foreground: oklch(0.25 0.01 255);
+  --muted: oklch(0.96 0.003 255);
+  --muted-foreground: oklch(0.52 0.015 255);
+  --accent: oklch(0.96 0.003 255);
+  --accent-foreground: oklch(0.12 0.01 255);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.91 0.005 255);
+  --input: oklch(0.91 0.005 255);
+  --ring: oklch(0.42 0.12 255);
+  --chart-1: oklch(0.42 0.12 255);
+  --chart-2: oklch(0.55 0.14 255);
+  --chart-3: oklch(0.65 0.13 255);
+  --chart-4: oklch(0.72 0.18 45);
+  --chart-5: oklch(0.75 0.01 255);
+  --sidebar: oklch(0.98 0.002 255);
+  --sidebar-foreground: oklch(0.12 0.01 255);
+  --sidebar-primary: oklch(0.38 0.14 255);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.96 0.003 255);
+  --sidebar-accent-foreground: oklch(0.12 0.01 255);
+  --sidebar-border: oklch(0.91 0.005 255);
+  --sidebar-ring: oklch(0.42 0.12 255);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 1400px;
+    }
+  }
+
+  /* Diamond Index™ Specific Components */
+  .di-glass-panel {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .di-card {
+    background: white;
+    border: 1px solid oklch(0.91 0.005 255);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+    border-radius: 0.5rem;
+  }
+
+  .di-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+    transition: all 0.4s ease;
+  }
+
+  .di-orange-line {
+    height: 1px;
+    background: oklch(0.72 0.18 45);
+    width: 100%;
+  }
+
+  .di-nav-active {
+    position: relative;
+  }
+
+  .di-nav-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: oklch(0.72 0.18 45);
+  }
+
+  .di-display-font {
+    font-family: 'DM Serif Display', serif;
+  }
+
+  .di-condensed-font {
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  /* Slow fade animations */
+  @keyframes di-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes di-float {
+    0%, 100% {
+      transform: translateY(0px) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(-2deg);
+    }
+  }
+
+  @keyframes di-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Scan line: sweeps top → bottom → top in a loop */
+  @keyframes di-scan {
+    0%   { top: 0%; opacity: 0; }
+    5%   { opacity: 1; }
+    50%  { top: calc(100% - 3px); opacity: 1; }
+    95%  { opacity: 1; }
+    100% { top: 0%; opacity: 0; }
+  }
+
+  /* Scan tint follows the scan line */
+  @keyframes di-scan-tint {
+    0%   { opacity: 0.3; }
+    50%  { opacity: 0.8; }
+    100% { opacity: 0.3; }
+  }
+
+  /* HUD blink: pulses in sync with scan */
+  @keyframes di-hud-blink {
+    0%, 100% { opacity: 0.5; }
+    50%       { opacity: 1; }
+  }
+
+  .di-animate-fade-up {
+    animation: di-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .di-animate-float {
+    animation: di-float 6s ease-in-out infinite;
+  }
+
+  .di-animate-fade-in {
+    animation: di-fade-in 1.2s ease forwards;
+  }
+
+  .di-delay-100 { animation-delay: 0.1s; }
+  .di-delay-200 { animation-delay: 0.2s; }
+  .di-delay-300 { animation-delay: 0.3s; }
+  .di-delay-400 { animation-delay: 0.4s; }
+  .di-delay-500 { animation-delay: 0.5s; }
+  .di-delay-600 { animation-delay: 0.6s; }
+  .di-delay-700 { animation-delay: 0.7s; }
+
+  .di-animate-fade-up,
+  .di-animate-fade-in {
+    opacity: 0;
+  }
+}
